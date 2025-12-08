@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "name": "toppers",
+            "includePath": [
+                "${workspaceFolder}/asp3_3.7/obj/",
+                "${workspaceFolder}/asp3_3.7/bsp/include/**",
+                "${workspaceFolder}/asp3_3.7/bsp/standalone/src/common/",
+                "${workspaceFolder}/asp3_3.7/bsp/standalone/src/arm/cortexa9/",
+                "${workspaceFolder}/asp3_3.7/bsp/standalone/src/arm/common/gcc",
+                "${workspaceFolder}/asp3_3.7/bsp/standalone/src/arm/common/",
+                "${workspaceFolder}/asp3_3.7/appli/",
+                "${workspaceFolder}/asp3_3.7/kernel/",
+                "${workspaceFolder}/asp3_3.7/include/",
+                "${workspaceFolder}/asp3_3.7/target/zybo_z7_gcc/",
+                "${workspaceFolder}/asp3_3.7/arch/arm_gcc/zynq7000/",
+                "${workspaceFolder}/asp3_3.7/arch/arm_gcc/common/",
+                "${workspaceFolder}/asp3_3.7/arch/gcc/" ,
+                "${workspaceFolder}/lwip/contrib/ports/toppers/include",
+                "${workspaceFolder}/lwip/contrib/ports/toppers/",
+                "${workspaceFolder}/lwip/src/include",
+                "${workspaceFolder}/lwip/src/",
+                "${workspaceFolder}/lwip/contrib/ports/xilinx/include/",
+                "${workspaceFolder}/lwip/contrib/ports/toppers/include",
+                "${workspaceFolder}/lwip/contrib/ports/toppers/",
+                "${workspaceFolder}/lwip/src/include"
+            ],
+            "defines": [
+                "ALLFUNC",
+                "SDT",
+                "_FILENAME_=_FILE_",
+                "CONFIG_LINKSPEED_AUTODETECT"
+            ],
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "cStandard": "c99",
+            "cppStandard": "gnu++11",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

@@ -19,12 +19,22 @@
 extern void (*__init_array_start[])(void);
 extern void (*__init_array_end[])(void);
 
+extern "C"
+{
+  void cpp_init(void);
+}
+
+
 static void call_constructors(void) {
     for (void (**p)(void) = __init_array_start; p != __init_array_end; ++p) {
         (*p)();
     }
 }
 
+void cpp_init(void)
+{
+  call_constructors();
+}
 class OverwriteInstanceName
   : public RTM::RtcLifecycleActionListener
 {
@@ -155,7 +165,6 @@ static int argc = 10;
 extern "C"{
 void openrtm_consoleout_thread(void* exinf)
 {
-  call_constructors();
   RTC::Manager* manager;
   std::cout << "ConsoleOut Starting...\n";
   manager = RTC::Manager::init(argc, argv);

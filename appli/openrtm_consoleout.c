@@ -100,6 +100,10 @@ struct netif server_netif;
 struct netif *echo_netif;
 
 /**
+ * C++グローバルインスタンス初期化
+ */
+void init_cpp(void);
+/**
  * 可変長メモリプールの確保
  */
 #define MEMORY_POOL_SIZE	TOPPERS_ROUND_SZ(1024*65536, sizeof(intptr_t))
@@ -604,11 +608,16 @@ while (1) {
 		STACK_SIZE,
 		DEFAULT_THREAD_PRIO);
 #endif
+
+	/**
+	 * C++グローバルインスタンス初期化
+	 */
+	cpp_init();
+
 	/**
 	 * corba task 開始
 	 */
-
-			
+ 			
 	sys_thread_new("openrtm_consoleout", (void(*)(void*))openrtm_consoleout_thread, 10,
             STACK_SIZE,
             DEFAULT_THREAD_PRIO);

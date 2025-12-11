@@ -4,7 +4,7 @@ NamingServiceが10.0.2.2:2809で動作している前提で作成されている
 
 
 ## 必要なアプリ
-動作環境には事前にOpenrRTM-aist 2.0の実行環境をインストールする。
+動作環境には事前にOpenRTM-aist 2.0の実行環境をインストールする。
 - rtm2Naming 
 - ConsoleInComp 
 - qemu-system-arm
@@ -40,7 +40,7 @@ sudo dnsmasq --interface=tap0 --bind-interfaces --except-interface=eth0 --except
 $ rtm2Naming     # NamingServiceの起動
 $ exec_qemu asp  # gdbでデバッグしたい場合には -S -gdb tcp:localhost:port 等として起動する。
 
-起動した以下のメッセージが表示される。
+起動したら以下のメッセージが表示される。
 TOPPERS/ASP3 Kernel Release 3.7.1 for ZYBO <Zynq-7000, Cortex-A9> (Dec 11 2025, 18:39:52)
 Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
                             Toyohashi Univ. of Technology, JAPAN
@@ -87,7 +87,7 @@ data_type: IDL:RTC/TimedLong:1.0
 -------------------------------------------------
 
 ```
-今回のサンプルはConsoleOutCompの機能以外に7番ポートで echo serverが立ち上がっっており、telnet等で7番ポートに接続することで通信の成立を確認することができる。
+今回のサンプルはConsoleOutCompの機能以外に7番ポートで echo serverが立ち上がっており、telnet等で7番ポートに接続することで通信の成立を確認することができる。
 
 別のターミナルでConsoleInCompを起動して接続
 ```

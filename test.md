@@ -1,15 +1,27 @@
-## OpenRTM-aist サンプル ConsoleOutComp 動作確認手順
-NamingServiceが10.0.2.2:2809で動作している前提で作成されている。
-ソース中の定義修正で変更可能。
+---
+title: TOPPERS版OpenRTMの最新版対応
+subtitle: 動作確認手順
+author: 伊藤和宣
+keywords: ["Rev1.0"]
+---
 
+# 動作確認手順  
+## OpenRTM-aist サンプル ConsoleOutComp 動作確認手順  
+NamingServiceが10.0.2.2:2809で動作している前提で作成されている。  
+ソース中の定義修正で変更可能。  
 
-## 必要なアプリ
-動作環境には事前にOpenRTM-aist 2.0の実行環境をインストールする。
+<br>
+
+## 必要なアプリ  
+動作環境には事前にOpenRTM-aist 2.0の実行環境をインストールする。  
+
 - rtm2Naming 
 - ConsoleInComp 
 - qemu-system-arm
 
-## 仮想ネットワークの構築
+<br>
+
+## 仮想ネットワークの構築  
 ```
 sudo ip tuntap add dev tap0 mode tap
 sudo ip link set tap0 up
@@ -17,8 +29,10 @@ sudo ip addr add 10.0.2.2/24 dev tap0
 sudo dnsmasq --interface=tap0 --bind-interfaces --except-interface=eth0 --except-interface=lo --dhcp-range=10.0.2.15,10.0.2.15,12h 
 ```
 
-## qemuの起動
-下記内容のシェルスクリプト(exec_qemu)を作成してtoppersバイナリを指定して実行
+<div style="page-break-before：always"></div>
+
+## qemuの起動  
+下記内容のシェルスクリプト(exec_qemu)を作成してtoppersバイナリを指定して実行  
 ```
 ~/bin/qemu-system-arm -M xilinx-zynq-a9 \
 -serial /dev/null \
@@ -34,13 +48,15 @@ sudo dnsmasq --interface=tap0 --bind-interfaces --except-interface=eth0 --except
 -kernel $@ 
 ```
 
-ターミナルからqemuを用いてConsoleOutCompを起動する。
+<br>
+
+ターミナルからqemuを用いてConsoleOutCompを起動する。  
 
 ```
 $ rtm2Naming     # NamingServiceの起動
 $ exec_qemu asp  # gdbでデバッグしたい場合には -S -gdb tcp:localhost:port 等として起動する。
 
-起動したら以下のメッセージが表示される。
+起動したら以下のメッセージが表示される。  
 TOPPERS/ASP3 Kernel Release 3.7.1 for ZYBO <Zynq-7000, Cortex-A9> (Dec 11 2025, 18:39:52)
 Copyright (C) 2000-2003 by Embedded and Real-Time Systems Laboratory
                             Toyohashi Univ. of Technology, JAPAN
@@ -49,8 +65,11 @@ Copyright (C) 2004-2023 by Embedded and Real-Time Systems Laboratory
 Copyright (C) 1977-2025 by Future Technology Laboratories.
 
 System logging task is started.
+```
 
+<div style="page-break-before：always"></div>
 
+```
 -----lwIP Socket Mode Echo server Demo Application ------
 Start PHY autonegotiation 
 Waiting for PHY to complete autonegotiation.
@@ -87,9 +106,12 @@ data_type: IDL:RTC/TimedLong:1.0
 -------------------------------------------------
 
 ```
-今回のサンプルはConsoleOutCompの機能以外に7番ポートで echo serverが立ち上がっており、telnet等で7番ポートに接続することで通信の成立を確認することができる。
 
-別のターミナルでConsoleInCompを起動して接続
+今回のサンプルはConsoleOutCompの機能以外に7番ポートで echo serverが立ち上がっており、telnet等で7番ポートに接続することで通信の成立を確認することができる。  
+
+<div style="page-break-before：always"></div>
+
+別のターミナルでConsoleInCompを起動して接続  
 ```
 $ ConsoleInComp \
 -o "manager.components.preconnect:ConsoleIn0.out?port=rtcname://localhost:2809/*/ConsoleOut0.in" \
@@ -113,11 +135,13 @@ Profile::properties:
 - provider: 
 ```
 
-## qemuのビルド
-https://github.com/xilinx/qemuからレポジトリをクローンする。
-今回のaspを動作させるためには以下のパッチを適用する必要がある。
-パッチ0001-FIX-read-to-clear-write-1-clear-read-only.patchを適用しビルドを実行する。
-パッチ適応後ビルドを実行する。
+<br>>
+
+## qemuのビルド  
+https://github.com/xilinx/qemuからレポジトリをクローンする。  
+今回のaspを動作させるためには以下のパッチを適用する必要がある。  
+パッチ0001-FIX-read-to-clear-write-1-clear-read-only.patchを適用しビルドを実行する。  
+パッチ適応後ビルドを実行する。  
 ```
 $ git clone https://github.com/xilinx/qemu qemu
 $ cd qemu
@@ -127,3 +151,5 @@ $ cd build
 $ ../configure
 $ make
 ```
+
+<div style="page-break-before：always"></div>

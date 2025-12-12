@@ -31,7 +31,7 @@ sudo dnsmasq --interface=tap0 --bind-interfaces --except-interface=eth0 --except
 
 <div style="page-break-before：always"></div>
 
-## qemuの起動  
+## 試験の実施  
 下記内容のシェルスクリプト(exec_qemu)を作成してtoppersバイナリを指定して実行  
 ```
 ~/bin/qemu-system-arm -M xilinx-zynq-a9 \
@@ -251,7 +251,7 @@ Data:          2
 
 <br>
 
-## qemuのビルド  
+# qemuのビルド  
 https://github.com/xilinx/qemuからレポジトリをクローンする。  
 今回のaspを動作させるためには以下のパッチを適用する必要がある。  
 パッチ0001-FIX-read-to-clear-write-1-clear-read-only.patchを適用しビルドを実行する。  

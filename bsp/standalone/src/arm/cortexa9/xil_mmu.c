@@ -83,13 +83,14 @@ extern u32 MMUTable;
 *			translation table entry.
 *
 ******************************************************************************/
+extern uint32_t section_table[];
 void Xil_SetTlbAttributes(INTPTR Addr, u32 attrib)
 {
 	u32 *ptr;
 	u32 section;
 
 	section = Addr / 0x100000U;
-	ptr = &MMUTable;
+	ptr = section_table;
 	ptr += section;
 	if(ptr != NULL) {
 		*ptr = (Addr & 0xFFF00000U) | attrib;

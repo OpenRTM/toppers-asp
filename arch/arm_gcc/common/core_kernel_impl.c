@@ -65,7 +65,7 @@ uint32_t	excpt_nest_count;		/* 例外ネストカウント */
 /*
  *  セクションテーブル
  */
-static uint32_t section_table[ARM_SECTION_TABLE_ENTRY]
+uint32_t section_table[ARM_SECTION_TABLE_ENTRY]
 							__attribute__((aligned(ARM_SECTION_TABLE_ALIGN)));
 
 /*

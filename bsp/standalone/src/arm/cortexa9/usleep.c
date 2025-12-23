@@ -48,7 +48,7 @@
 #define COUNTS_PER_USECOND (SLEEP_TIMER_FREQUENCY / 1000000)
 #else
 /**< Global Timer is always clocked at half of the CPU frequency */
-#define COUNTS_PER_USECOND  (XPAR_CPU_CORTEXA9_CORE_CLOCK_FREQ_HZ / (2U*1000000U))
+#define COUNTS_PER_USECOND  (XPAR_CPU_CORTEXA9_CORE_CLOCK_FREQ_HZ / (2U*1000000U)/67U)
 #endif
 
 /*****************************************************************************/

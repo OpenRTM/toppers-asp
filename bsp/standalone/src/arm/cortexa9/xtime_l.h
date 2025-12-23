@@ -63,7 +63,7 @@ typedef u64 XTime;
 #define COUNTS_PER_SECOND          (SLEEP_TIMER_FREQUENCY)
 #else
 /* Global Timer is always clocked at half of the CPU frequency */
-#define COUNTS_PER_SECOND          (XPAR_CPU_CORTEXA9_CORE_CLOCK_FREQ_HZ /2)
+#define COUNTS_PER_SECOND          (XPAR_CPU_CORTEXA9_CORE_CLOCK_FREQ_HZ /2/67U)
 #endif
 /************************** Variable Definitions *****************************/
 

@@ -60,7 +60,7 @@
  *  MMUの使用に関する設定
  */
 #define USE_ARM_MMU
-#define USE_ARM_SSECTION
+//#define USE_ARM_SSECTION
 
 /*
  *  GICに関する定義，コアで共通な定義
